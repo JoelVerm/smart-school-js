@@ -15,7 +15,7 @@ async function init() {
 	let loginStatus = await fetch('/login', {
 		method: 'POST',
 		body: new URLSearchParams(loginInfo).toString()
-	}).then(d => d.json())
+	})
 	console.log(loginStatus)
 	if (loginStatus === 'error') {
 		sessionStorage.setItem('loginInfo', '')
