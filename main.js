@@ -82,6 +82,7 @@ app.onPost('/login', async (req, res) => {
             headers: {
                 "content-type": "application/x-www-form-urlencoded",
                 origin: "https://inloggen.somtoday.nl",
+                'Access-Control-Expose-Headers': 'location'
             },
             maxRedirects: 0,
             },
@@ -90,6 +91,7 @@ app.onPost('/login', async (req, res) => {
         // Get code from callback url
         if (!error.isAxiosError) throw error
         console.log(error)
+        console.log(error.headers)
         const callback = new URL(error.response.headers.location)
         const code = callback.searchParams.get("code")
 
