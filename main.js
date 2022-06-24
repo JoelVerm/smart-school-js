@@ -1,5 +1,7 @@
 import * as app from './http.js'
 import axios from 'axios'
+import dotenv from 'dotenv'
+dotenv.config()
 
 app.onGet('/', async (req, res) => {
     res.render('index.html')
@@ -24,5 +26,5 @@ app.onPost('/login', async (req, res) => {
     res.return('ok')
 })
 
-let port = process.env.PORT | 80
+let port = process.env.PORT || 80
 let server = await app.start(port)
