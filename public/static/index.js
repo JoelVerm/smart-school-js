@@ -12,10 +12,10 @@ function init() {
 	document.querySelector('#login').style.display = 'none'
 	loginInfo = JSON.parse(loginInfo)
 
-	let loginStatus = fetch('/login', {
+	let loginStatus = await fetch('/login', {
 		method: 'POST',
 		body: new URLSearchParams(loginInfo).toString()
-	})
+	}).then(d => d.json())
 	console.log(loginStatus)
 	if (loginStatus === 'error') {
 		sessionStorage.setItem('loginInfo', '')
