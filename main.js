@@ -56,9 +56,7 @@ app.onPost('/login', async (req, res) => {
             maxRedirects: 0,
         })
     } catch (res) {
-        console.log(JSON.stringify(res))
-        console.log(res)
-        const location = new URL(res.request.res.responseUrl)
+        const location = new URL(res.response.headers.location)
         const auth = location.searchParams.get("auth")
         try {
         // Submit the login form like someone logged in from a browser
@@ -79,7 +77,8 @@ app.onPost('/login', async (req, res) => {
                 },
             )
         } catch (error) {
-        // Get code from callback url
+            // Get code from callback url
+            console.log(error)
             if (!error.isAxiosError) throw error
             const callback = new URL(error.request.res.responseUrl)
             const code = callback.searchParams.get("code")
