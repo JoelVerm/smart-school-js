@@ -56,6 +56,7 @@ app.onPost('/login', async (req, res) => {
             maxRedirects: 0,
         })
     } catch (res) {
+        console.log(JSON.stringify(res))
         const location = new URL(res.request.res.responseUrl)
         const auth = location.searchParams.get("auth")
         try {
