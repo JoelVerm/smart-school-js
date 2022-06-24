@@ -6,7 +6,7 @@ new MouseListener(document.querySelector('#menu-home')).onDown(() => {
 	document.querySelector('#wrapper').style.left = '-100vw'
 })
 
-function init() {
+async function init() {
 	let loginInfo = sessionStorage.getItem('loginInfo')
 	if (!loginInfo) return
 	document.querySelector('#login').style.display = 'none'
