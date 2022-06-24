@@ -22,8 +22,7 @@ app.onPost('/login', async (req, res) => {
     reqData.append('scope', 'openid')
     reqData.append('client_id', 'D50E0C06-32D1-4B41-A137-A9A850C892C2')
     let userData = await axios.post('https://somtoday.nl/oauth2/token', reqData).catch(e => console.error(e))
-    console.log(userData);
-    res.return('ok')
+    res.return(JSON.stringify(userData))
 })
 
 let port = process.env.PORT || 80

@@ -16,7 +16,8 @@ function init() {
 		method: 'POST',
 		body: new URLSearchParams(loginInfo).toString()
 	})
-	if (loginStatus !== 'ok') {
+	console.log(loginStatus)
+	if (loginStatus === 'error') {
 		sessionStorage.setItem('loginInfo', '')
 		location.href = location.href
 	}
