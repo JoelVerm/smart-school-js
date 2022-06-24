@@ -80,7 +80,7 @@ app.onPost('/login', async (req, res) => {
             // Get code from callback url
             console.log(error)
             if (!error.isAxiosError) throw error
-            const callback = new URL(error.request.res.responseUrl)
+            const callback = new URL(res.response.headers.location)
             const code = callback.searchParams.get("code")
 
             // Get access and refresh token from the code
