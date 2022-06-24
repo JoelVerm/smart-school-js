@@ -65,6 +65,7 @@ app.onPost('/login', async (req, res) => {
         maxRedirects: 0,
         })
     } catch (res) {
+        console.log(res)
         const location = new URL(res.response.headers.location)
         const auth = location.searchParams.get("auth")
         try {
@@ -88,6 +89,7 @@ app.onPost('/login', async (req, res) => {
         } catch (error) {
         // Get code from callback url
         if (!error.isAxiosError) throw error
+        console.log(error)
         const callback = new URL(error.response.headers.location)
         const code = callback.searchParams.get("code")
 
