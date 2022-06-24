@@ -71,7 +71,8 @@ app.onPost('/login', async (req, res) => {
                 {
                     headers: {
                         "content-type": "application/x-www-form-urlencoded",
-                        origin: "https://inloggen.somtoday.nl",
+                        "origin": "https://inloggen.somtoday.nl",
+                        "Referer": "android-app://nl.topicus.somtoday.leerling/"
                     },
                     maxRedirects: 0,
                 },
