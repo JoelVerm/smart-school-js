@@ -5,7 +5,8 @@
 	"main": "main.js",
 	"type": "module",
 	"scripts": {
-		"s": "nodemon main.js"
+		"s": "nodemon main.js",
+		"start": "node main.js"
 	},
 	"author": "Joël Vermeulen",
 	"license": "ISC",
@@ -16,5 +17,8 @@
 	},
 	"dependencies": {
 		"axios": "^0.27.2"
+	},
+	"engines": {
+		"node": "16.x"
 	}
 }
