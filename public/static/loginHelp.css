@@ -1,0 +1,16 @@
+@import url('./main.css');
+
+body {
+	background: var(--color-bg);
+    overflow-y: scroll;
+}
+img {
+    width: 100%;
+}
+div#center {
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}

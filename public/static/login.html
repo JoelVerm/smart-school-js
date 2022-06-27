@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <title>Selecteer school</title>
-</head>
-<body class="dark">
-    <form id="center" action="startSSO" method="post">
-        <label for="schoolName">Voer de naam van je school in</label>
-        <input type="text" id="schoolName" name="schoolName" placeholder="Korte schoolnaam">
-        <button type="submit">Ga naar login</button>
-    </form>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="login.css" />
+		<title>Selecteer school</title>
+	</head>
+	<body class="dark">
+		<form class="center" action="startSSO" method="post">
+			<p>
+				Deze pagina werkt alleen op laptops en pc's. Als je een smartphone hebt, ga dan op je laptop of pc naar deze pagina.
+			</p>
+			<p>
+				De instructies hieronder zijn onmisbaar! 😉
+				<a href="loginHelp" target="_blank"rel="noopener noreferrer">Open de instructies</a>
+			</p>
+			<label for="schoolName">Voer de naam van je school in</label>
+			<input
+				type="text"
+				id="schoolName"
+				name="schoolName"
+				placeholder="Korte schoolnaam"
+			/>
+			<button type="submit">Ga naar login</button>
+		</form>
+	</body>
 </html>
