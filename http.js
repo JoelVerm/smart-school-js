@@ -144,7 +144,9 @@ export class Request {
 		this.url = new URL(req.url, `http://${req.headers.host}`)
 		this.path = this.url.pathname
 		this.query = this.url.search
-		this.params = flatten(this.url.searchParams)
+		this.params = flatten(
+			Object.fromEntries(this.url.searchParams.entries())
+		)
 	}
 	/** @returns {Promise<qs.ParsedUrlQuery>} post data */
 	async getPostData() {
@@ -244,8 +246,8 @@ export class Response {
 			throw `Requested file: ${path} not found`
 		}
 	}
-	async return(string) {
-		this.res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' })
+	async return(string, contentType = 'text/plain', code = 200) {
+		this.res.writeHead(code, { 'Content-Type': contentType + '; charset=utf-8' })
 		this.res.end(string)
 	}
 }
