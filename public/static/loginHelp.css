@@ -2,7 +2,7 @@
 
 body {
 	background: var(--color-bg);
-    overflow-y: scroll;
+    overflow-y: scroll !important;
 }
 img {
     width: 100%;
