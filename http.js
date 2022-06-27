@@ -4,6 +4,7 @@ import { Buffer } from 'buffer'
 import { promises } from 'fs'
 import qs from 'querystring'
 import { URL } from 'url'
+import { isText } from 'istextorbinary'
 
 import * as pathModule from 'path'
 import { fileURLToPath } from 'url'
@@ -47,7 +48,12 @@ export const flatten = obj =>
 
 let renderFns = {}
 async function genRenderFn(filePath) {
-	let text = await promises.readFile(filePath, 'utf8')
+	let buffer = await promises.readFile(filePath)
+	if (!isText(filePath, buffer)) {
+		renderFns[filePath] = () => buffer
+		return
+	}
+	let text = buffer.toString('utf8')
 	let matches = []
 	text = text
 		.replace(/\\/g, '\\\\')
@@ -384,6 +390,7 @@ export async function start(port = 80, options = {}) {
 	Object.assign(serverOptions, options)
 	if (serverOptions.whitelistPaths)
 		await generateWhitelistPaths()
+	console.log(renderFns);
 	let httpServer = createServer(handleReq)
 	httpServer.listen(port)
 	return httpServer
