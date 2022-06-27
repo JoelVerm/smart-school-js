@@ -1,6 +1,10 @@
 @import url('./main.css');
 @import url('./nav.css');
 
+body {
+	background: var(--color-bg);
+}
+
 form {
 	position: absolute;
 	top: 50%;
