@@ -17,12 +17,27 @@ app.onPost('/startSSO', async (req, res) => {
 		res.return('error: school not found: ' + schoolName)
 		return
 	}
-    let href = `https://somtoday.nl/oauth2/authorize?redirect_uri=somtodayleerling%3A%2F%2Foauth%2Fcallback&client_id=D50E0C06-32D1-4B41-A137-A9A850C892C2&response_type=code&prompt=login&state=UNlYiXONB69K8uNwNJ2rCw&scope=openid&code_challenge=-OyuBNyqCP6pFRjotemGVkq9WX0hGhacBOFZsPEu-o8&code_challenge_method=S256&tenant_uuid=${school.uuid}&oidc_iss=${school.oidcurls[0].url}&session=no_session`
+    let href = `https://somtoday.nl/oauth2/authorize?redirect_uri=somtodayleerling%3A%2F%2Foauth%2Fcallback&client_id=D50E0C06-32D1-4B41-A137-A9A850C892C2&response_type=code&prompt=login&state=UNlYiXONB69K8uNwNJ2rCw&scope=openid&code_challenge=F8ZMiSrb3ysna7ClO5W2o_78tNla6qxm_aOPeRtIJWQ&code_challenge_method=S256&tenant_uuid=${school.uuid}&oidc_iss=${school.oidcurls[0].url}&session=no_session`
     res.redirect(href)
 })
-app.onPost('loginLinkSubmit', async (req, res) => {
+app.onPost('/loginLinkSubmit', async (req, res) => {
 	let link = (await req.getPostData()).link
-	//TODO link to credentials
+	let code = new URL(link).searchParams.get('code')
+	let loginData = await axios.post(
+		'https://inloggen.somtoday.nl/oauth2/token',
+		new URLSearchParams({
+			grant_type: 'authorization_code',
+			code: code,
+			code_verifier: 'DI_RqEBWaVebKZMZCQ02oChis7HbTCqSk7vZU9hiDg8',
+			client_id: 'D50E0C06-32D1-4B41-A137-A9A850C892C2'
+		}).toString(),
+		{
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded'
+			}
+		}
+	).catch(console.error)
+	console.log(loginData)
 })
 
 let port = process.env.PORT || 80
