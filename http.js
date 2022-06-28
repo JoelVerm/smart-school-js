@@ -390,7 +390,6 @@ export async function start(port = 80, options = {}) {
 	Object.assign(serverOptions, options)
 	if (serverOptions.whitelistPaths)
 		await generateWhitelistPaths()
-	console.log(renderFns);
 	let httpServer = createServer(handleReq)
 	httpServer.listen(port)
 	return httpServer
