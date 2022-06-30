@@ -12,7 +12,6 @@ async function init() {
 		location.href = '/login'
 		return
 	}
-	document.querySelector('#login').style.display = 'none'
 	loginInfo = JSON.parse(loginInfo)
 }
 window.onload = init

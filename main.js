@@ -37,7 +37,12 @@ app.onPost('/loginLinkSubmit', async (req, res) => {
 			}
 		}
 	).catch(console.error)
-	console.log(loginData)
+	res.render('loginLinkSubmit.html', {
+		api_url: loginData.data.somtoday_api_url,
+		access_token: loginData.data.access_token,
+		refresh_token: loginData.data.refresh_token,
+		id_token: loginData.data.id_token
+	})
 })
 
 let port = process.env.PORT || 80

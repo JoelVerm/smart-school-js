@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Set login info</title>
+	</head>
+	<body>
+		<div class="center">
+			<button onclick="lPc">Login op pc of laptop</button>
+			<button>Login op telefoon (nog niet werkend)</button>
+		</div>
+		<script>
+			const api_url = '{{api_url}}'
+			const access_token = '{{access_token}}'
+			const refresh_token = '{{refresh_token}}'
+			const id_token = '{{id_token}}'
+
+			function lPc() {
+				localStorage.setItem(
+					'loginInfo',
+					JSON.stringify({
+						api_url,
+						access_token,
+						refresh_token,
+						id_token
+					})
+				)
+                location.href = '/'
+			}
+		</script>
+	</body>
+</html>
