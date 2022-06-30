@@ -7,7 +7,7 @@ new MouseListener(document.querySelector('#menu-home')).onDown(() => {
 })
 
 async function init() {
-	let loginInfo = sessionStorage.getItem('loginInfo')
+	let loginInfo = localStorage.getItem('loginInfo')
 	if (!loginInfo) {
 		location.href = '/login'
 		return
